@@ -135,10 +135,11 @@ nav.menu-mobile, nav.menu-desk{
 }
 
 .menu-mobilesticky a{
+    display:inline-block;
     background-color: $color_main;
     color: $color_back;
-    margin-top:0.3rem;
-    margin-bottom:0.3rem;
+    margin-top:0.2rem;
+    margin-bottom:0.2rem;
 }
 
 .bajo-header {
