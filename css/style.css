@@ -118,10 +118,11 @@ nav.menu-mobile a.active, nav.menu-mobile a:hover, nav.menu-desk a.active, nav.m
 }
 
 .menu-mobilesticky a {
+  display: inline-block;
   background-color: #790606;
   color: aquamarine;
-  margin-top: 0.3rem;
-  margin-bottom: 0.3rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
 }
 
 .bajo-header {
