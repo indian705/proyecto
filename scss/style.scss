@@ -1,0 +1,515 @@
+$color_main:rgb(121, 6, 6);
+$color_back:aquamarine;
+$color_return:rgb(211, 35, 35);
+$width_video:640px;
+$height_video:360px;
+$ratio_video:percentage($height_video/$width_video);
+
+* {
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+/* El fondo del body es una imagen en tonos azules, por eso se ha puesto background-color de azul claro por si hay problemas y no se carga */
+body{
+    background-image:url('../assets/abstract-sky-background.jpg');
+    background-color:$color_back;
+    color:$color_main;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+/* Se establece el margen de los contenedores principales */
+.main_wrapper, .menu-mobile, .menu-desk{
+    width:90%;   
+    margin-left:5%;
+    margin-right:5%;
+}
+
+.normal-header{
+    /*Se establece una imagen de fondo para el header que incluye el encabezado h1 y el menú de navegación*/
+    
+    //Se establece display:flex para poder poner el menú de navegación por encima del encabezado con la opción column-reverse
+    display: flex;
+    flex-direction:column-reverse;
+    color:orange;
+    width: 100%;
+    background-image:url('../assets/background.jpg') ;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    
+    h1 {
+        font-family: 'Galada', cursive;
+        //El tamaño de fuente de h1 y subtitulo van a ir incrementándose en cada media query
+        font-size: 2.7rem;
+        margin-left:2rem;
+        padding-top:0.5rem;
+        padding-bottom:5rem;
+        text-align:left;
+        /* color:yellowgreen; */
+        .subtitulo{
+            font-size:1.5rem;
+            display:block;
+            font-style: italic;
+        }
+    }
+    //Éste es el menú hamburguesa
+    nav{
+        font-size:1.2rem;
+        text-align:right;
+        margin-right:5%;
+        margin-top:2%;
+        font-weight:bold;
+    }
+    .relativo{
+        position:absolute;
+        right:0;
+    }
+}
+
+//Éste es la configuración habitual de los nav
+nav{
+    font-size: 1rem;
+    a{
+        text-decoration:none;
+        color:inherit
+    }
+}
+
+section{
+    /* Se resalta la primera letra del primer párrafo de cada sección, con un tamaño mayor de letra, evitando que el párrafo con clase .exc-letra de la sección de geografía la tenga mientras no haya formato de dos columnas */
+    p:nth-of-type(1):not(.exc_letra)::first-letter{
+        font-size:200%;
+    }
+    ul{
+    list-style-type:square;
+    padding-left:2.5rem;
+        li{
+            padding:0.5rem 0.3rem;
+        }
+    }
+}
+
+
+
+//Éste es el menú en el formato mobile, situado al final del documento
+nav.menu-mobile {
+    background-color: $color_main;
+    color: $color_back;
+}
+
+nav.menu-mobile, nav.menu-desk{
+    margin-top:1rem;
+    a{
+        padding:0.5rem;
+        margin-left:1rem;        
+        display:inline-block;
+        &.active, &:hover{
+            background-color: $color_back;
+            color: $color_main;
+
+        }
+    }
+}
+
+.hide-menu{
+    display:none;
+}
+
+.hide{
+    display:none; 
+}
+
+.sticky-header{
+    position:fixed;
+    z-index:10;
+    top:0;
+    left:0;
+    right:0;
+    height:3rem;
+    background-image:url('../assets/abstract-sky-background.jpg');
+    background-color:$color_back;
+}
+
+.menu-mobilesticky a{
+    background-color: $color_main;
+    color: $color_back;
+    margin-top:0.3rem;
+    margin-bottom:0.3rem;
+}
+
+.bajo-header {
+    height: 3rem;
+}
+    
+img{
+    display:block;
+    margin:auto;
+    width:100%;
+    max-width: 800px;
+    padding-top:1rem;
+    padding-bottom:1rem;
+}
+
+h2{
+    font-family: 'Galada', cursive;
+    font-size:2rem;
+    font-weight:bold;
+    text-align:center;
+    padding-top:3rem;
+    padding-bottom:1rem;
+}
+p{
+    font-size:1rem;
+    padding-top:0.5rem;
+    padding-bottom:0.5rem;
+    text-align:justify;
+}
+div.tabla{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    padding-bottom:2rem;                        
+    table{             
+        box-shadow:5px 5px 10px 5px grey;
+        margin-top:1rem;
+        th, td {
+        padding: 1rem 1.5rem;
+        border:1px solid;            
+        }
+        th {
+            background-color: mediumseagreen;
+            color: $color_main;
+        }
+    }
+    p{
+        font-style: italic;
+        font-size:0.9rem;
+    }
+}    
+
+div.carousel>figure>img {
+    display: none;
+    margin: 0px;
+}
+
+div.carousel>figure.visible>img {
+    display: block;
+    overflow: hidden;
+    position: relative;
+    margin: 0px auto;
+}
+
+//Se pone en cursiva la empresa propietaria del iframe
+.aeromedia{
+    font-style: italic;
+}
+
+/* Estructura para conseguir que el iframe sea responsive, mantenga el ratio y se quede centrado. */
+.video_container{
+    position: relative;
+    padding-bottom: $ratio_video;
+    height: 0;
+    overflow: hidden;
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    max-width: $width_video;    
+    iframe{
+        display:block;
+        position: absolute;
+        top:0;
+        left:0;        
+        width: 100%;
+        height: 100%;
+        margin-top:1rem;
+        max-width:$width_video;
+        max-height:$height_video;
+    }
+}
+
+//Se pone la cita entre comillas y con cursiva
+q{
+    &::before{
+        content:"\201C";
+    }
+    &::after{
+        content:"\201D";
+    }
+    font-style: italic;
+}
+
+/* Estructura para el link que permite regresar a Inicio */
+div.return{
+    margin-top:1rem;
+    a{
+        display:inline-block;
+        text-decoration: none;
+        color:$color_back;
+        border-radius: 20%;
+        background-color:$color_return;
+        padding:0.5rem 1rem;
+        transition:transform 0.5s linear;
+        &.active, &:hover{
+            transform: scale(1.2);
+        }        
+    }
+}
+
+div.div-top {
+    position: fixed;
+    right: 3rem;
+    bottom: 3rem;
+    padding: 0.5rem;
+    border-radius:30%;
+    opacity: 0.6; 
+    background-color: $color_main; 
+    .btn-top{
+        font-size:1rem;
+        cursor:pointer;
+        color:$color_back;
+    }    
+}
+
+//Estilo para el "botón" de mostrar más contenido
+.mas {
+    display:inline-block;
+    border: 1px solid gainsboro;
+    background-color:$color_main;
+    color: $color_back;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-style: italic;
+}
+
+//El footer se diseña con display:flex para incluir los datos de address y las redes sociales.
+footer{    
+    border-top:1px solid;
+    margin-top:2rem;
+    padding-top:1rem;
+    text-align:center;
+    margin-left:auto;
+    margin-right:auto;
+    display:flex;
+    
+    address{
+        /* margin-left:5rem; */
+        display:flex;
+        flex-direction:column;
+        justify-content:center;
+        align-items:center;
+        
+    } 
+    /* ul{        
+        li{
+            display:inline-block;
+            padding-right: 0.2rem;
+            padding-left: 0.5rem;
+            margin-bottom: 10px;  
+            //Se da estilo a los iconos de redes sociales procedentes de Font Awesome
+            .fab{
+                border-radius:50%;
+                font-size:1rem;
+                width: 30px;
+                height: 30px;
+                line-height: 30px;
+                text-align: center;
+                color: white;
+                &:hover {
+                    color: green;
+                }
+            }
+            .fa-facebook{background-color:#3C599F;} 
+            .fa-twitter{background-color:#32CCFE;}
+            .fa-youtube{background-color:#C52F30;}
+        }
+        
+    }   */
+}
+
+
+
+form{
+    width:100%;
+    margin-left:auto;
+    margin-right:auto;
+    fieldset{
+        margin-top:1rem;
+        margin-bottom:1rem;
+        .control-group{
+        
+            width: 100%;
+            margin-top: 0.1rem;
+            margin-bottom: 0.5rem;
+            
+            input, label{
+                display:block;
+                margin-top:0.2rem;
+        
+            }
+        textarea{
+            max-width: 95%;
+        }
+    }
+}
+    
+}
+
+  
+/* Estructura de la mediaquery para tablet horizontal*/
+ @media screen and (min-width:650px){
+    header{
+        h1{
+            font-size:3rem;
+            padding-left:2rem;
+            .subtitulo{
+                font-size:1.8rem;
+            }
+        }
+        nav:nth-of-type(1){
+            display:none;
+        }
+    }
+    nav.menu-mobile{
+        display:none;
+    }
+    nav.menu-desk{
+        display:block;
+        
+        ul{
+            display:flex;
+            justify-content: flex-end;            
+        }
+        a{
+            background-color: $color_main;
+            color: $color_back; 
+            margin-left:0.2rem;
+            padding:0.3rem 0.4rem;
+            font-size:0.8rem;
+            display:block;
+            border-radius: 20%;
+            transition:transform 0.5s linear;
+            &.active, &:hover{
+                transform: scale(1.2);
+                background-color: $color_back;
+                color: $color_main;
+            }
+        }
+    }       
+    
+   .main_wrapper{
+        width:85%;   
+        margin-left:auto;
+        margin-right:auto;
+   }    
+   
+
+    .control-group{
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        margin-top: 0.3rem;
+        margin-bottom: 0.3rem;
+        padding:1rem;
+    }
+    form{
+        width:70%;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    form fieldset{
+        margin-top:1rem;
+        margin-bottom:1rem;
+    }
+   
+
+}
+
+/* Estructura de la mediaquery para escritorio*/
+@media screen and (min-width:960px){
+    //Se aumenta el tamaño de letra de la cabecera
+    header{
+        h1{
+            font-size:3.5rem;
+            padding-left:2rem;
+        }
+        .subtitulo{
+            font-size:2rem;
+        }        
+    } 
+
+    .sticky-header{
+        position:fixed;
+        top:0;
+        left:0;
+        right:0;
+        height:5rem;
+        background-image:url('../assets/abstract-sky-background.jpg');
+        background-color:$color_back;
+    }
+
+    .bajo-header {
+        height: 5rem;
+    }
+
+    //Se deja más margen en los extremos
+    .main_wrapper{
+        width:80%;   
+        margin-left:auto;
+        margin-right:auto;
+   }     
+
+    //Se aumenta el tamaño de letra de los encabezados de la sección y los párrafos
+    h2{
+        font-size:2.5rem;
+    }
+    section{
+        p{
+            font-size:1.2rem;
+        }
+    }
+    
+    nav.menu-desk{
+        a{
+            padding:0.8rem 0.8rem;
+            margin-left:0.5rem;
+            font-size:1.2rem;
+            transition:transform 0.5s linear;
+            &:hover{
+                transform: scale(1.3);
+            }
+        }
+    }
+
+    //Se deda más margen en los extremos
+    img{
+        width:85%;
+    }
+
+    /* La sección de Geografía se divide en dos columnas */
+    /* .wrapper{
+        display:flex;
+        justify-content: space-between;
+        p:nth-of-type(1)::first-letter{
+            font-size:200%;
+        }
+        div{
+            padding:1rem;
+        }
+    } */
+    //En este tamaño ya no interesa que crezca el video, así que se queda fijo con sus dimensiones
+    .video_container{
+        height: $height_video;
+        width: $width_video;
+        padding-bottom:25rem;
+    }    
+    
+
+    
+    
+
+}

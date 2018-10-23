@@ -1,0 +1,470 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* El fondo del body es una imagen en tonos azules, por eso se ha puesto background-color de azul claro por si hay problemas y no se carga */
+body {
+  background-image: url("../assets/abstract-sky-background.jpg");
+  background-color: aquamarine;
+  color: #790606;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+/* Se establece el margen de los contenedores principales */
+.main_wrapper, .menu-mobile, .menu-desk {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.normal-header {
+  /*Se establece una imagen de fondo para el header que incluye el encabezado h1 y el menú de navegación*/
+  display: flex;
+  flex-direction: column-reverse;
+  color: orange;
+  width: 100%;
+  background-image: url("../assets/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.normal-header h1 {
+  font-family: "Galada", cursive;
+  font-size: 2.7rem;
+  margin-left: 2rem;
+  padding-top: 0.5rem;
+  padding-bottom: 5rem;
+  text-align: left;
+  /* color:yellowgreen; */
+}
+.normal-header h1 .subtitulo {
+  font-size: 1.5rem;
+  display: block;
+  font-style: italic;
+}
+.normal-header nav {
+  font-size: 1.2rem;
+  text-align: right;
+  margin-right: 5%;
+  margin-top: 2%;
+  font-weight: bold;
+}
+.normal-header .relativo {
+  position: absolute;
+  right: 0;
+}
+
+nav {
+  font-size: 1rem;
+}
+nav a {
+  text-decoration: none;
+  color: inherit;
+}
+
+section {
+  /* Se resalta la primera letra del primer párrafo de cada sección, con un tamaño mayor de letra, evitando que el párrafo con clase .exc-letra de la sección de geografía la tenga mientras no haya formato de dos columnas */
+}
+section p:nth-of-type(1):not(.exc_letra)::first-letter {
+  font-size: 200%;
+}
+section ul {
+  list-style-type: square;
+  padding-left: 2.5rem;
+}
+section ul li {
+  padding: 0.5rem 0.3rem;
+}
+
+nav.menu-mobile {
+  background-color: #790606;
+  color: aquamarine;
+}
+
+nav.menu-mobile, nav.menu-desk {
+  margin-top: 1rem;
+}
+nav.menu-mobile a, nav.menu-desk a {
+  padding: 0.5rem;
+  margin-left: 1rem;
+  display: inline-block;
+}
+nav.menu-mobile a.active, nav.menu-mobile a:hover, nav.menu-desk a.active, nav.menu-desk a:hover {
+  background-color: aquamarine;
+  color: #790606;
+}
+
+.hide-menu {
+  display: none;
+}
+
+.hide {
+  display: none;
+}
+
+.sticky-header {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3rem;
+  background-image: url("../assets/abstract-sky-background.jpg");
+  background-color: aquamarine;
+}
+
+.menu-mobilesticky a {
+  background-color: #790606;
+  color: aquamarine;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.bajo-header {
+  height: 3rem;
+}
+
+img {
+  display: block;
+  margin: auto;
+  width: 100%;
+  max-width: 800px;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+h2 {
+  font-family: "Galada", cursive;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 3rem;
+  padding-bottom: 1rem;
+}
+
+p {
+  font-size: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  text-align: justify;
+}
+
+div.tabla {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 2rem;
+}
+div.tabla table {
+  box-shadow: 5px 5px 10px 5px grey;
+  margin-top: 1rem;
+}
+div.tabla table th, div.tabla table td {
+  padding: 1rem 1.5rem;
+  border: 1px solid;
+}
+div.tabla table th {
+  background-color: mediumseagreen;
+  color: #790606;
+}
+div.tabla p {
+  font-style: italic;
+  font-size: 0.9rem;
+}
+
+div.carousel > figure > img {
+  display: none;
+  margin: 0px;
+}
+
+div.carousel > figure.visible > img {
+  display: block;
+  overflow: hidden;
+  position: relative;
+  margin: 0px auto;
+}
+
+.aeromedia {
+  font-style: italic;
+}
+
+/* Estructura para conseguir que el iframe sea responsive, mantenga el ratio y se quede centrado. */
+.video_container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 640px;
+}
+.video_container iframe {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  margin-top: 1rem;
+  max-width: 640px;
+  max-height: 360px;
+}
+
+q {
+  font-style: italic;
+}
+q::before {
+  content: "“";
+}
+q::after {
+  content: "”";
+}
+
+/* Estructura para el link que permite regresar a Inicio */
+div.return {
+  margin-top: 1rem;
+}
+div.return a {
+  display: inline-block;
+  text-decoration: none;
+  color: aquamarine;
+  border-radius: 20%;
+  background-color: #d32323;
+  padding: 0.5rem 1rem;
+  transition: transform 0.5s linear;
+}
+div.return a.active, div.return a:hover {
+  transform: scale(1.2);
+}
+
+div.div-top {
+  position: fixed;
+  right: 3rem;
+  bottom: 3rem;
+  padding: 0.5rem;
+  border-radius: 30%;
+  opacity: 0.6;
+  background-color: #790606;
+}
+div.div-top .btn-top {
+  font-size: 1rem;
+  cursor: pointer;
+  color: aquamarine;
+}
+
+.mas {
+  display: inline-block;
+  border: 1px solid gainsboro;
+  background-color: #790606;
+  color: aquamarine;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+footer {
+  border-top: 1px solid;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  /* ul{        
+      li{
+          display:inline-block;
+          padding-right: 0.2rem;
+          padding-left: 0.5rem;
+          margin-bottom: 10px;  
+          //Se da estilo a los iconos de redes sociales procedentes de Font Awesome
+          .fab{
+              border-radius:50%;
+              font-size:1rem;
+              width: 30px;
+              height: 30px;
+              line-height: 30px;
+              text-align: center;
+              color: white;
+              &:hover {
+                  color: green;
+              }
+          }
+          .fa-facebook{background-color:#3C599F;} 
+          .fa-twitter{background-color:#32CCFE;}
+          .fa-youtube{background-color:#C52F30;}
+      }
+      
+  }   */
+}
+footer address {
+  /* margin-left:5rem; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+form fieldset {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+form fieldset .control-group {
+  width: 100%;
+  margin-top: 0.1rem;
+  margin-bottom: 0.5rem;
+}
+form fieldset .control-group input, form fieldset .control-group label {
+  display: block;
+  margin-top: 0.2rem;
+}
+form fieldset .control-group textarea {
+  max-width: 95%;
+}
+
+/* Estructura de la mediaquery para tablet horizontal*/
+@media screen and (min-width: 650px) {
+  header h1 {
+    font-size: 3rem;
+    padding-left: 2rem;
+  }
+  header h1 .subtitulo {
+    font-size: 1.8rem;
+  }
+  header nav:nth-of-type(1) {
+    display: none;
+  }
+
+  nav.menu-mobile {
+    display: none;
+  }
+
+  nav.menu-desk {
+    display: block;
+  }
+  nav.menu-desk ul {
+    display: flex;
+    justify-content: flex-end;
+  }
+  nav.menu-desk a {
+    background-color: #790606;
+    color: aquamarine;
+    margin-left: 0.2rem;
+    padding: 0.3rem 0.4rem;
+    font-size: 0.8rem;
+    display: block;
+    border-radius: 20%;
+    transition: transform 0.5s linear;
+  }
+  nav.menu-desk a.active, nav.menu-desk a:hover {
+    transform: scale(1.2);
+    background-color: aquamarine;
+    color: #790606;
+  }
+
+  .main_wrapper {
+    width: 85%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .control-group {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 0.3rem;
+    margin-bottom: 0.3rem;
+    padding: 1rem;
+  }
+
+  form {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  form fieldset {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+/* Estructura de la mediaquery para escritorio*/
+@media screen and (min-width: 960px) {
+  header h1 {
+    font-size: 3.5rem;
+    padding-left: 2rem;
+  }
+  header .subtitulo {
+    font-size: 2rem;
+  }
+
+  .sticky-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5rem;
+    background-image: url("../assets/abstract-sky-background.jpg");
+    background-color: aquamarine;
+  }
+
+  .bajo-header {
+    height: 5rem;
+  }
+
+  .main_wrapper {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  h2 {
+    font-size: 2.5rem;
+  }
+
+  section p {
+    font-size: 1.2rem;
+  }
+
+  nav.menu-desk a {
+    padding: 0.8rem 0.8rem;
+    margin-left: 0.5rem;
+    font-size: 1.2rem;
+    transition: transform 0.5s linear;
+  }
+  nav.menu-desk a:hover {
+    transform: scale(1.3);
+  }
+
+  img {
+    width: 85%;
+  }
+
+  /* La sección de Geografía se divide en dos columnas */
+  /* .wrapper{
+      display:flex;
+      justify-content: space-between;
+      p:nth-of-type(1)::first-letter{
+          font-size:200%;
+      }
+      div{
+          padding:1rem;
+      }
+  } */
+  .video_container {
+    height: 360px;
+    width: 640px;
+    padding-bottom: 25rem;
+  }
+}
+
+/*# sourceMappingURL=css/style.css.map */
